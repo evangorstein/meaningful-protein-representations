@@ -71,7 +71,7 @@ class DistNet(nn.Module):
 class VAE(pl.LightningModule, EmbeddedManifold):
     def __init__(self, data, weights, perm, hparams, aa_weights=None):
         super().__init__()
-        self.hparams = hparams
+        self.hparams.update(hparams)
 
         self._train_encoder_only = False
         self.train_idx = int(data.shape[0] * self.hparams.train_fraction)
